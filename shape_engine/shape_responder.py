@@ -32,7 +32,7 @@ class ShpResponder(object):
         attr = self.attribute_fields
         if not self.attribute_fields:
             fields = self.queryset.model._meta.fields
-            attr = [f.name for f in fields if not isinstance(f, GeometryField)]
+            attr = [f.name for f in fields if not isinstance(f, GeometryField) and not isinstance(f, DateTimeField)]
         return attr
 
     def get_geo_field(self):
